@@ -5,7 +5,7 @@
 - `git init`
 깃 초기화 (.git 폴더 생성)
 
-`git remote add origin {repo url}`
+- `git remote add origin {repo url}`
 로컬 폴더를 해당 url 의 레포지토리와 연결
 
 - `git status`
@@ -16,6 +16,9 @@
 
 - `git commit -m "commit message"`
 현재 스테이지에 올라온 변경사항 커밋(`-m` 옵션은 커밋 메시지 옵션)
+
+- `git config --list`
+깃 설정 내역 확인
 
 - `git push`
 현재 커밋을 리모트로 푸쉬
@@ -28,3 +31,10 @@
 
 - `git pull`
 리모트로부터 새로운 커밋(변경사항) 받아오기
+
+- `git config {name} {value}`
+로컬, 현재 폴더에 대한 설정 변경
+
+- `git config --global {name} {value}`
+전역 (해당 컴퓨터 전체)에 대한 설정 변경
+
