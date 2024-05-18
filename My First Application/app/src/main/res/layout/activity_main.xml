@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_green_dark"
+        android:text="경민이 잘한다~★"
+        android:textSize="50sp"
+        />
+    <!-- Width 가로 "match_parent" : 화면의 길이(부모)를 따라라-->
+    <!--  height 세로 "wrap_content" : text 의 세로길이 만큼만 패딩을 준다 -->
+    <!--  주석달기 ctrl+/  -->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#E91E63"
+        android:textSize="20sp"
+        android:text="경민이 잘한다~★"
+        />
+
+<!--   위에 것을 똑같이 복붙했는데 바로 화면상에 나타나지 않는 이유는 LinearLayout 이라는 것은 Orientation을 지정해줘야한다 -->
+<!--android:orientation="horizontal" : 옆으로 글자가 생겨남-->
+<!--android:orientation="vertical" : 아래로 글자가 생겨남 -->
+<!--android:textColor="#E91E63" : 글자 색상 변경> #ffffff 왼쪽에 색상표 클릭하여 색상 선택   -->
+<!--android:textSize="20sp" : 글자 사이즈 변경 (단위:sp)    -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="경민이 잘한다~★"
+        />
+
+</LinearLayout>
