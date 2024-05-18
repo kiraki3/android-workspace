@@ -30,9 +30,9 @@
 - `android:Orientation="vertical"`
 텍스트 세로(밑)으로 붙여넣기
 
-- `- android:textColor="#ffffff"`
+- `android:textColor="#ffffff"`
 text color
 
--`android:textSize="xxsp"`
+- `android:textSize="xxsp"`
 text size (단위:sp)
 
