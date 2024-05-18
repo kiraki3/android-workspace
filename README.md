@@ -38,7 +38,7 @@
 - `git config --global {name} {value}`
 전역 (해당 컴퓨터 전체)에 대한 설정 변경
 
-- 'git clone {repository URL}'
+- `git clone {repository URL}`
 원격 레포지토리를 로컬로 다운로드.클론 
 
 
