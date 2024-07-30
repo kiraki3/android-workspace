@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_audiotrack"
+        android:enabled="true"
+        android:icon="@drawable/audiotrack_24"
+        android:title="오디오트랙"/>
+
+    <item
+        android:id="@+id/action_batery"
+        android:enabled="true"
+        android:icon="@drawable/battery_charging_full_24"
+        android:title="배터리충전"/>
+
+    <item
+        android:id="@+id/action_delete"
+        android:enabled="true"
+        android:icon="@drawable/delete_24"
+        android:title="휴지통"/>
+
+    <item
+        android:id="@+id/action_run"
+        android:enabled="true"
+        android:icon="@drawable/directions_run_24"
+        android:title="지각"/>
+
+    <item
+        android:id="@+id/action_nope"
+        android:enabled="true"
+        android:icon="@drawable/do_not_disturb_24"
+        android:title="접근금지"/>
+
+</menu>

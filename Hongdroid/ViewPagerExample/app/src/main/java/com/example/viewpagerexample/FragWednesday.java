@@ -1,0 +1,27 @@
+package com.example.viewpagerexample;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+public class FragWednesday extends Fragment {
+    private View view;
+
+    public static FragWednesday newInstance() {
+        FragWednesday fragWednesday = new FragWednesday(); // 객체 생성
+        return fragWednesday;  // adapter 에 맞춰 주기적으로 instance가 만들어진다
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.frag_mon, container, false); // frag_mon 와 연동
+
+        return view;
+    }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_lens_blur"
+        android:enabled="true"
+        android:icon="@drawable/baseline_lens_blur_24"
+        android:title="블러"/>
+    <item
+        android:id="@+id/action_nature_people"
+        android:enabled="true"
+        android:icon="@drawable/baseline_nature_people_24"
+        android:title="자연친화적"/>
+    <item
+        android:id="@+id/action_place"
+        android:enabled="true"
+        android:icon="@drawable/baseline_place_24"
+        android:title="장소"/>
+    <item
+        android:id="@+id/action_pool"
+        android:enabled="true"
+        android:icon="@drawable/baseline_pool_24"
+        android:title="수영"/>
+    <item
+        android:id="@+id/action_brain"
+        android:enabled="true"
+        android:icon="@drawable/baseline_psychology_alt_24"
+        android:title="물음표"/>
+
+</menu>

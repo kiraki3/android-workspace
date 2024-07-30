@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "385646780384",
+    "project_id": "loginexample-2828b",
+    "storage_bucket": "loginexample-2828b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385646780384:android:f557c86c1c5b9a5a581585",
+        "android_client_info": {
+          "package_name": "com.example.googleloginexample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYOgTBy6zx3B_aQAD-SH_nheUdBK2FmG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
