@@ -1,14 +1,10 @@
 package com.example.videorecordexample;
 
 import android.Manifest;
-import android.content.ContentUris;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -25,8 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.io.File;
 import java.util.List;
 
 
@@ -35,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     private Camera camera;
     private MediaRecorder mediaRecorder;
     private Button btn_record;
-    private SurfaceView surfaceView;
+    private SurfaceView surface_view;
     private SurfaceHolder surfaceHolder;
     private boolean recording = false;
 
@@ -56,28 +51,24 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                 .setPermissionListener(permission)
                 .setRationaleMessage("녹화를 위해 권한을 허용해주세요.")
                 .setDeniedMessage("권한이 거부되었습니다. 설정 > 권한에서 허용해주세요.")
-//                .setPermissions(android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.RECORD_AUDIO)
                 .setPermissions(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
                 .check();
 
-            ArrayList<Uri> uriList = new ArrayList<>();
-            uriList.add(ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
-                    -1L));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            MediaStore.createWriteRequest(getApplication().getContentResolver(),uriList);
-        }
-
         // 버튼 생성
-        btn_record = (Button) findViewById(R.id.btn_record);
+        btn_record = findViewById(R.id.btn_record);
+        surface_view = findViewById(R.id.surface_view);
+
         btn_record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // 실제로 녹화 버튼이 나오는 부분
                 if(recording) {
-                    mediaRecorder.start();    // 시작
+                    mediaRecorder.stop();    // 시작
                     mediaRecorder.release();  // 끄다
                     camera.lock();            // 잠금
+                    surface_view.setVisibility(View.GONE);
                     recording = false;
+                    btn_record.setText("녹화시작");
                     Toast.makeText(MainActivity.this, "녹화가 종료되었습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     // 별도의 ui thread 에서 해주기 위해 (과부화, 오류 방지)
@@ -88,16 +79,19 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                             try {
                                 mediaRecorder = new MediaRecorder();
                                 camera.unlock();
+                                surface_view.setVisibility(View.VISIBLE);
                                 mediaRecorder.setCamera(camera);
                                 mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);              // 영상 옴질
                                 mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);                 // 저장 공간
                                 mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_720P));  // 영상 화질
-                                mediaRecorder.setOrientationHint(30);
-                                mediaRecorder.setOutputFile("/Download/test.mp4");
+                                mediaRecorder.setOrientationHint(90);
+                                String outputFile = getApplication().getFilesDir().getAbsolutePath() + File.separator + "test.mp4";
+                                mediaRecorder.setOutputFile(outputFile);
                                 mediaRecorder.setPreviewDisplay(surfaceHolder.getSurface());
                                 mediaRecorder.prepare();
                                 mediaRecorder.start();
                                 recording = true;
+                                btn_record.setText("녹화종료");
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 mediaRecorder.release();
@@ -118,8 +112,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             // 허용한 경우
             camera = Camera.open();
             camera.setDisplayOrientation(90);
-            surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
-            surfaceHolder = surfaceView.getHolder();
+            surfaceHolder = surface_view.getHolder();
             surfaceHolder.addCallback(MainActivity.this);
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         }
